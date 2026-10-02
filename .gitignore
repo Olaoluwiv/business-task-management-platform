@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+secret.json
+create-users.json
+check-users.json
+
+# AWS / deployment temporary files
+task-definition-current.json
+task-definition-register.json
+schema-override.json
+--region
+
+# Temporary files
+*.tmp
+*.log
+
+# Test/cache
+.pytest_cache/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+# AWS task definition artifacts
+backend/task-definition-debug.json
+backend/task-definition.json

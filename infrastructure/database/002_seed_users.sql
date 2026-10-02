@@ -1,0 +1,22 @@
+INSERT INTO users (
+    cognito_user_id,
+    first_name,
+    last_name,
+    email,
+    role
+)
+VALUES
+(
+    'dev-employee-001',
+    'John',
+    'Employee',
+    'john.employee@example.com',
+    'EMPLOYEE'
+),
+(
+    'dev-manager-001',
+    'Sarah',
+    'Manager',
+    'sarah.manager@example.com',
+    'MANAGER'
+);

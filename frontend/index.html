@@ -1,0 +1,598 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Business Task Management Platform
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="app-layout">
+
+
+    <!-- =====================================
+         SIDEBAR
+    ====================================== -->
+
+    <aside class="sidebar">
+
+
+        <div class="sidebar-logo">
+
+            <h2>
+                TaskFlow
+            </h2>
+
+            <p>
+                Task Management
+            </p>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+  <a href="#dashboard" class="nav-item active" id="dashboard-link">Dashboard</a>
+  <a href="#tasks" class="nav-item" id="tasks-link">My Tasks</a>
+  <a href="#completed" class="nav-item" id="completed-link">Completed</a>
+  <a href="#manager" class="nav-item" id="manager-link">Manager</a>
+</nav>
+
+
+        <div class="sidebar-bottom">
+
+
+            <div class="sidebar-user">
+
+
+                <div class="user-avatar">
+                    E
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Employee
+                    </strong>
+
+                    <span>
+                        User ID: 1
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- =====================================
+         MAIN AREA
+    ====================================== -->
+
+    <div class="main-area">
+
+
+        <!-- =====================================
+             HEADER
+        ====================================== -->
+
+        <header class="header">
+
+
+            <div>
+
+                <h1>
+                    Employee Dashboard
+                </h1>
+
+                <p>
+                    Manage your assigned tasks
+                    and track your progress.
+                </p>
+
+            </div>
+
+
+            <div class="user-info">
+
+                <span id="user-role">
+                    Employee
+                </span>
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- =====================================
+             MAIN CONTENT
+        ====================================== -->
+
+        <main class="container">
+
+
+            <!-- =====================================
+                 STATISTICS
+            ====================================== -->
+
+            <section
+                class="stats-grid"
+                id="dashboard"
+            >
+
+
+                <!-- TOTAL TASKS -->
+
+                <div class="stat-card">
+
+                    <div class="stat-label">
+                        Total Tasks
+                    </div>
+
+                    <div
+                        class="stat-value"
+                        id="total-tasks"
+                    >
+                        0
+                    </div>
+
+                </div>
+
+
+                <!-- IN PROGRESS -->
+
+                <div class="stat-card">
+
+                    <div class="stat-label">
+                        In Progress
+                    </div>
+
+                    <div
+                        class="stat-value"
+                        id="progress-tasks"
+                    >
+                        0
+                    </div>
+
+                </div>
+
+
+                <!-- COMPLETED -->
+
+                <div class="stat-card">
+
+                    <div class="stat-label">
+                        Completed
+                    </div>
+
+                    <div
+                        class="stat-value"
+                        id="completed-tasks"
+                    >
+                        0
+                    </div>
+
+                </div>
+
+
+                <!-- PENDING APPROVAL -->
+
+                <div class="stat-card">
+
+                    <div class="stat-label">
+                        Pending Approval
+                    </div>
+
+                    <div
+                        class="stat-value"
+                        id="pending-tasks"
+                    >
+                        0
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =====================================
+                 TASKS
+            ====================================== -->
+
+            <section
+                class="tasks-section"
+                id="tasks"
+            >
+
+
+                <div class="dashboard-header">
+
+
+                    <div>
+
+                        <h2>
+                            My Tasks
+                        </h2>
+
+                        <p>
+                            Tasks assigned to you
+                            by your manager.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        id="refresh-button"
+                    >
+                        Refresh Tasks
+                    </button>
+
+
+                </div>
+
+
+
+                <!-- TASK LIST -->
+
+                <section
+                    id="task-list"
+                    class="task-list"
+                >
+
+                    <p class="loading">
+                        Loading tasks...
+                    </p>
+
+                </section>
+
+
+            </section>
+<section class="content-section" id="manager">
+    <div class="section-header">
+        <div>
+            <h2>Manager Dashboard</h2>
+            <p>Manage tasks created and assigned by you.</p>
+        </div>
+
+        <button class="refresh-button" id="manager-refresh-button">
+            Refresh
+        </button>
+    </div>
+
+    <div class="task-list" id="manager-task-list">
+        <p class="loading">
+            Manager tasks will appear here.
+        </p>
+    </div>
+</section>
+
+
+        </main>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =====================================
+     TASK DETAILS MODAL
+====================================== -->
+
+<div
+    id="task-modal"
+    class="modal-overlay"
+>
+
+
+    <div class="task-modal">
+
+
+        <!-- =====================================
+             MODAL HEADER
+        ====================================== -->
+
+        <div class="modal-header">
+
+
+            <h2>
+                Task Details
+            </h2>
+
+
+            <button
+                id="close-modal"
+                class="close-modal"
+            >
+                ×
+            </button>
+
+
+        </div>
+
+
+
+        <!-- =====================================
+             MODAL BODY
+        ====================================== -->
+
+        <div class="modal-body">
+
+
+            <!-- TASK TITLE -->
+
+            <div class="modal-field">
+
+
+                <label>
+                    Task Title
+                </label>
+
+
+                <div id="modal-title">
+                    -
+                </div>
+
+
+            </div>
+
+
+
+            <!-- DESCRIPTION -->
+
+            <div class="modal-field">
+
+
+                <label>
+                    Description
+                </label>
+
+
+                <div id="modal-description">
+                    -
+                </div>
+
+
+            </div>
+
+
+
+            <!-- STATUS + PRIORITY -->
+
+            <div class="modal-row">
+
+
+                <div class="modal-field">
+
+
+                    <label>
+                        Status
+                    </label>
+
+
+                    <div id="modal-status">
+                        -
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="modal-field">
+
+
+                    <label>
+                        Priority
+                    </label>
+
+
+                    <div id="modal-priority">
+                        -
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- TASK ID + ASSIGNED TO -->
+
+            <div class="modal-row">
+
+
+                <div class="modal-field">
+
+
+                    <label>
+                        Task ID
+                    </label>
+
+
+                    <div id="modal-id">
+                        -
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="modal-field">
+
+
+                    <label>
+                        Assigned To
+                    </label>
+
+
+                    <div id="modal-assigned">
+                        -
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- CREATED BY + DUE DATE -->
+
+            <div class="modal-row">
+
+
+                <div class="modal-field">
+
+
+                    <label>
+                        Created By
+                    </label>
+
+
+                    <div id="modal-created-by">
+                        -
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="modal-field">
+
+
+                    <label>
+                        Due Date
+                    </label>
+
+
+                    <div id="modal-due-date">
+                        -
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- CREATED + LAST UPDATED -->
+
+            <div class="modal-row">
+
+
+                <div class="modal-field">
+
+
+                    <label>
+                        Created
+                    </label>
+
+
+                    <div id="modal-created-at">
+                        -
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="modal-field">
+
+
+                    <label>
+                        Last Updated
+                    </label>
+
+
+                    <div id="modal-updated-at">
+                        -
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =====================================
+             MODAL FOOTER
+        ====================================== -->
+
+        <div class="modal-footer">
+
+
+            <button
+                id="close-modal-button"
+            >
+                Close
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =====================================
+     JAVASCRIPT
+====================================== -->
+
+<script src="app.js"></script>
+
+
+</body>
+
+</html>
+```

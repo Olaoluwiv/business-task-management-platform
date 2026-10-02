@@ -1,0 +1,7 @@
+{
+  "title": "Test rejected task workflow",
+  "description": "Complete the financial document verification and submit it for management review.",
+  "priority": "HIGH",
+  "created_by": 2,
+  "assigned_to": 1
+}

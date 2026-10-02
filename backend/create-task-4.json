@@ -1,0 +1,7 @@
+{
+  "title": "Test rejected task workflow",
+  "description": "Test the manager rejection and employee rework process.",
+  "priority": "MEDIUM",
+  "created_by": 2,
+  "assigned_to": 1
+}

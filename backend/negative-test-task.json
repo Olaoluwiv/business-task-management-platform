@@ -1,0 +1,7 @@
+{
+  "title": "Negative workflow test",
+  "description": "Temporary task for backend validation testing.",
+  "priority": "LOW",
+  "created_by": 2,
+  "assigned_to": 1
+}

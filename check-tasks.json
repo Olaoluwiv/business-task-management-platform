@@ -1,0 +1,12 @@
+{
+  "containerOverrides": [
+    {
+      "name": "business-task-management-backend",
+      "command": [
+        "python",
+        "-c",
+        "import os,psycopg;c=psycopg.connect(host=os.environ['DB_HOST'],port=os.environ['DB_PORT'],dbname=os.environ['DB_NAME'],user=os.environ['DB_USER'],password=os.environ['DB_PASSWORD']);print(c.execute('SELECT id,title,status FROM tasks ORDER BY id;').fetchall());c.close()"
+      ]
+    }
+  ]
+}
